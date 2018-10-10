@@ -10,7 +10,19 @@ def encrypt_caesar(plaintext):
     ''
     """
     # PUT YOUR CODE HERE
+    word=[]
+    for i in plaintext:
+        i=ord(i)
+        if i>119:   
+            i=i-23
+        else:
+            i=i+3
+        i=chr(i)
+        word.append(i)   
+    ciphertext=(''.join(word))
+    print(ciphertext)
     return ciphertext
+
 
 
 def decrypt_caesar(ciphertext):
@@ -25,4 +37,15 @@ def decrypt_caesar(ciphertext):
     ''
     """
     # PUT YOUR CODE HERE
+    word0=[]
+    for i in ciphertext:
+        i=ord(i)
+        if i<100:
+            i=i+23
+        else:
+            i=i-3
+        i=chr(i)
+        word0.append(i)
+    plaintext=(''.join(word0))
+    print(plaintext)
     return plaintext

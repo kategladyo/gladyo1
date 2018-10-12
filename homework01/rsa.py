@@ -6,8 +6,18 @@ def is_prime(n):
     True
     >>> is_prime(8)
     False
-    """
+    """ 
     # PUT YOUR CODE HERE
+    k=True
+    if n>0 and n<4:
+        return k
+    else: 
+        for i in range(2,n):
+            if n%i==0:
+                k=not k
+                break 
+    return k
+
     pass
 
 def generate_keypair(p, q):

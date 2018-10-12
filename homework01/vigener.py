@@ -38,13 +38,39 @@ def encrypt_vigenere(plaintext, keyword):
 
 
 def decrypt_vigenere(ciphertext, keyword):
-    """
-    >>> decrypt_vigenere("PYTHON", "A")
-    'PYTHON'
-    >>> decrypt_vigenere("python", "a")
-    'python'
-    >>> decrypt_vigenere("LXFOPVEFRNHR", "LEMON")
-    'ATTACKATDAWN'
-    """
-    # PUT YOUR CODE HERE
-    return plaintext
+	"""
+	>>> decrypt_vigenere("PYTHON", "A")
+	'PYTHON'
+	>>> decrypt_vigenere("python", "a")
+	'python'
+	>>> decrypt_vigenere("LXFOPVEFRNHR", "LEMON")
+	'ATTACKATDAWN'
+	"""
+	# PUT YOUR CODE HERE
+	keyword=list(keyword)
+	ciphertext=list(ciphertext)
+	while len(keyword)<len(ciphertext):
+		keyword=keyword+keyword
+	plaintext=[]
+	#создаем словарь ключей
+	key={chr(a):b for (a,b) in zip(range(65,91), range(26))}
+	k=0
+	for i in range(97,123):
+		key[chr(i)]=k
+		k+=1
+	
+	
+	for i in range(0,len(ciphertext)):
+		m=ord(ciphertext[i])
+		if m>64 and m<91:
+			m=m-key[keyword[i]]
+			if m<65:
+				m+=26
+		if m>96 and m<123:
+			m=m-key[keyword[i]]
+			if m<97:
+				m+=26
+		plaintext.append(chr(m))
+	plaintext=''.join(plaintext)
+		
+	return plaintext

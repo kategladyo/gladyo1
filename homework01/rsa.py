@@ -20,21 +20,42 @@ def is_prime(n):
 
     pass
 
+def gcd(a, b):
+    """
+    >>> gcd(12, 15)
+    3
+    >>> gcd(3, 7)
+    1
+    """
+    del_a=[]
+    del_b=[]
+    nod=1
+    for i in range(1,int(a/2)+1):
+        if a%i==0:
+            del_a.append(i)
+    for i in range(2, int(b/2)+1):
+        if b%i==0:
+            del_b.append(i)
+    for i in del_a:
+        if i in del_b:
+            nod=i
+    return nod
+    pass
+
+
+
+
 def generate_keypair(p, q):
     if not (is_prime(p) and is_prime(q)):
         raise ValueError('Both numbers must be prime.')
     elif p == q:
         raise ValueError('p and q cannot be equal')
-
-    # n = pq
-    # PUT YOUR CODE HERE
-
-    # phi = (p-1)(q-1)
-    # PUT YOUR CODE HERE
+    n=p*q
+    phi = (p-1)(q-1)
+    
 
     # Choose an integer e such that e and phi(n) are coprime
     e = random.randrange(1, phi)
-
     # Use Euclid's Algorithm to verify that e and phi(n) are comprime
     g = gcd(e, phi)
     while g != 1:

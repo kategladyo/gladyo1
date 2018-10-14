@@ -17,7 +17,6 @@ def is_prime(n):
                 k=not k
                 break 
     return k
-
     pass
 
 def gcd(a, b):
@@ -41,9 +40,6 @@ def gcd(a, b):
             nod=i
     return nod
     pass
-
-
-
 
 def generate_keypair(p, q):
     if not (is_prime(p) and is_prime(q)):

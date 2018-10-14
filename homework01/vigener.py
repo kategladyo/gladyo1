@@ -38,6 +38,7 @@ def encrypt_vigenere(plaintext, keyword):
 
 
 def decrypt_vigenere(ciphertext, keyword):
+<<<<<<< HEAD
 	"""
 	>>> decrypt_vigenere("PYTHON", "A")
 	'PYTHON'
@@ -54,12 +55,33 @@ def decrypt_vigenere(ciphertext, keyword):
 	plaintext=[]
 	#создаем словарь ключей
 	key={chr(a):b for (a,b) in zip(range(65,91), range(26))}
+=======
+    """
+    >>> decrypt_vigenere("PYTHON", "A")
+    'PYTHON'
+    >>> decrypt_vigenere("python", "a")
+    'python'
+    >>> decrypt_vigenere("LXFOPVEFRNHR", "LEMON")
+    'ATTACKATDAWN'
+    """
+    # PUT YOUR CODE HERE
+    ciphertext=list(ciphertext)
+    keyword=list(keyword)
+    while len(keyword)<len(ciphertext):
+		keyword=keyword+keyword
+	plaintext=[]
+    #создаем словарик ключей
+    key={chr(a):b for (a,b) in zip(range(65,91), range(26))}
+>>>>>>> feature/caesar
 	k=0
 	for i in range(97,123):
 		key[chr(i)]=k
 		k+=1
+<<<<<<< HEAD
 	
 	
+=======
+>>>>>>> feature/caesar
 	for i in range(0,len(ciphertext)):
 		m=ord(ciphertext[i])
 		if m>64 and m<91:
@@ -72,5 +94,11 @@ def decrypt_vigenere(ciphertext, keyword):
 				m+=26
 		plaintext.append(chr(m))
 	plaintext=''.join(plaintext)
+<<<<<<< HEAD
 		
 	return plaintext
+=======
+
+
+    return plaintext
+>>>>>>> feature/caesar

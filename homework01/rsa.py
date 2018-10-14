@@ -52,6 +52,22 @@ def generate_keypair(p, q):
         raise ValueError('p and q cannot be equal')
     n=p*q
     phi = (p-1)(q-1)
+
+def multiplicative_inverse(e, phi):
+    """
+    >>> multiplicative_inverse(7, 40)
+    23
+    """
+    def gcd_extended(a, b):
+        if not b:
+            return (a, 1, 0)
+        else:
+            d, x, y = gcd_extended(b, a % b)
+            return (d, y, x - y * (a // b))
+
+    d, x, y = gcd_extended(e, phi)
+    return x % phi
+    pass
     
 
     # Choose an integer e such that e and phi(n) are coprime

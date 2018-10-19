@@ -10,20 +10,17 @@ def encrypt_caesar(plaintext):
     ''
     """
     # my code
-    word = []
-    for i in plaintext:
-        i = ord(i)
-        if i > 119 and i < 123:
-            i = i - 23
-        elif i > 96 and i < 120:
-            i = i + 3
-        elif i > 87 and i < 91:
-            i = i - 23
-        elif i > 64 and i < 88:
-            i = i + 3
-        i = chr(i)
-        word.append(i)
-    ciphertext = (''.join(word))
+    ciphertext = ''
+    for ch in plaintext:
+        if ch >= 'x' and ch <= 'z':
+            ch = chr(ord(ch) - 23)
+        elif ch >= 'a' and ch < 'x':
+            ch = chr(ord(ch) + 3)
+        elif ch >= 'X' and ch <= 'Z':
+            ch = chr(ord(ch) - 23)
+        elif ch >= 'A' and ch < 'X':
+            ch = chr(ord(ch) + 3)
+        ciphertext += ch
     return ciphertext
 
 
@@ -38,19 +35,16 @@ def decrypt_caesar(ciphertext):
     >>> decrypt_caesar("")
     ''
     """
-    #my code
-    word0 = []
-    for i in ciphertext:
-        i = ord(i)
-        if i > 64 and i < 68:
-            i = i + 23
-        elif i > 96 and i < 100:
-            i += 23
-        elif i > 99 and i < 123:
-            i = i - 3
-        elif i > 67 and i < 91:
-            i -= 3
-        i = chr(i)
-        word0.append(i)
-    plaintext = (''.join(word0))
+    # my code
+    plaintext = ''
+    for ch in ciphertext:
+        if ch >= 'a' and ch <= 'c':
+            ch = chr(ord(ch) + 23)
+        elif ch >= 'd' and ch <= 'z':
+            ch = chr(ord(ch) - 3)
+        elif ch >= 'A' and ch <= 'C':
+            ch = chr(ord(ch) + 23)
+        elif ch >= 'D' and ch <= 'Z':
+            ch = chr(ord(ch) - 3)
+        plaintext += ch
     return plaintext

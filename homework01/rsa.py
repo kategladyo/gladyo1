@@ -100,7 +100,7 @@ def encrypt(pk: int, plaintext: str) -> str:
     # the character using a^b mod m
     cipher = [(ord(char) ** key) % n for char in plaintext]
     # Return the array of bytes
-    return ciphertext
+    return cipher
 
 
 def decrypt(pk: int, ciphertext: str) -> str:
@@ -109,7 +109,7 @@ def decrypt(pk: int, ciphertext: str) -> str:
     # Generate the plaintext based on the ciphertext and key using a^b mod m
     plain = [chr((char ** key) % n) for char in ciphertext]
     # Return the array of bytes as a string
-    return ''.join(plaintext)
+    return ''.join(plain)
 
 
 if __name__ == '__main__':

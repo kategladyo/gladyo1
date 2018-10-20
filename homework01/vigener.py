@@ -1,4 +1,4 @@
-def encrypt_vigenere(plaintext: str, keyword: str) -> str:
+def encrypt_vigenere(plaintext: list, keyword: list) -> str:
     """
     >>> encrypt_vigenere("PYTHON", "A")
     'PYTHON'
@@ -34,7 +34,7 @@ def encrypt_vigenere(plaintext: str, keyword: str) -> str:
     return ciphertext
 
 
-def decrypt_vigenere(ciphertext: str, keyword: str) -> str:
+def decrypt_vigenere(ciphertext: list, keyword: list) -> str:
     """
     >>> decrypt_vigenere("PYTHON", "A")
     'PYTHON'

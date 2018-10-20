@@ -1,4 +1,6 @@
 import random
+import types
+from typing import Tuple
 
 
 def is_prime(n: int) -> bool:
@@ -37,10 +39,10 @@ def gcd(a: int, b: int) -> int:
     del_a = []
     del_b = []
     nod = 1
-    for i in range(1, int(a/2)+1):
+    for i in range(1, int(a / 2)+1):
         if a % i == 0:
             del_a.append(i)
-    for i in range(2, int(b/2)+1):
+    for i in range(2, int(b / 2)+1):
         if b % i == 0:
             del_b.append(i)
     for i in del_a:
@@ -58,7 +60,7 @@ def multiplicative_inverse(e: int, phi: int) -> int:
     23
     """
     # PUT YOUR CODE HERE
-    def gcd_extended(a, b):
+    def gcd_extended(a: int, b: int) -> Tuple[int, int, int]:
         if not b:
             return (a, 1, 0)
         else:
@@ -69,7 +71,7 @@ def multiplicative_inverse(e: int, phi: int) -> int:
     return x % phi
 
 
-def generate_keypair(p: int, q: int) -> int:
+def generate_keypair(p: int, q: int) -> tuple:
     if not (is_prime(p) and is_prime(q)):
         raise ValueError('Both numbers must be prime.')
     elif p == q:
@@ -93,7 +95,7 @@ def generate_keypair(p: int, q: int) -> int:
     return ((e, n), (d, n))
 
 
-def encrypt(pk: int, plaintext: str) -> str:
+def encrypt(pk: tuple, plaintext: str) -> list:
     # Unpack the key into it's components
     key, n = pk
     # Convert each letter in the plaintext to numbers based on
@@ -103,7 +105,7 @@ def encrypt(pk: int, plaintext: str) -> str:
     return cipher
 
 
-def decrypt(pk: int, ciphertext: str) -> str:
+def decrypt(pk: tuple, ciphertext: list) -> str:
     # Unpack the key into its components
     key, n = pk
     # Generate the plaintext based on the ciphertext and key using a^b mod m
